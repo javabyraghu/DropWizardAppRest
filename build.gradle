@@ -1,0 +1,44 @@
+
+plugins {
+    id 'java'
+    id  'application'
+}
+
+group 'com.app'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.dropwizard:dropwizard-core:2.0.0'
+    implementation 'io.dropwizard:dropwizard-jackson:2.0.0'
+    testImplementation 'io.dropwizard:dropwizard-testing:2.0.0'
+    implementation 'io.dropwizard:dropwizard-hibernate:2.0.10'
+    testImplementation 'io.dropwizard:dropwizard-testing:2.0.0'
+    implementation 'com.mysql:mysql-connector-j:8.0.31'
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'io.rest-assured:rest-assured:4.3.2'
+
+    testImplementation 'org.mockito:mockito-core:3.6.28'
+    testImplementation 'org.assertj:assertj-core:3.18.1'
+}
+
+mainClassName = 'com.app.DemoApplication'
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,17 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 9081
+  adminConnectors:
+    - type: http
+      port: 9008
+
+# Database settings.
+database:
+  driverClass: com.mysql.cj.jdbc.Driver
+  user: root
+  password: root
+  url: jdbc:mysql://localhost:3306/antra
+  properties:
+    hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate.hbm2ddl.auto: create
