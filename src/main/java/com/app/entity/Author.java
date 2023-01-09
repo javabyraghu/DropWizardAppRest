@@ -2,10 +2,9 @@ package com.app.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="author")
@@ -17,6 +16,13 @@ public class Author {
     @Column(name="aname")
     @JsonProperty
     private String name;
+
+    @ManyToMany
+    @JoinTable(name="author_books",
+            joinColumns = @JoinColumn(name="aidFk"),
+            inverseJoinColumns = @JoinColumn(name="bidFk")
+    )
+    private List<Book> books;
 
     public Author() {
 
@@ -38,11 +44,20 @@ public class Author {
         this.name = name;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
                 "authId=" + authId +
                 ", name='" + name + '\'' +
+                ", books=" + books +
                 '}';
     }
 }
